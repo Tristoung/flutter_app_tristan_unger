@@ -6,6 +6,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// creation de lapplication
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// on cree un statefulwidget donc il faut override createstate
 class Home extends StatefulWidget {
   const Home({
     super.key
@@ -33,6 +35,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+// createstate doit donc override build
 class _HomeState extends State<Home> {
   final _service = BrainrotService();
   List<String> _names = [];
@@ -65,6 +68,7 @@ class _HomeState extends State<Home> {
   }
 }
 
+// logique de creation dune ligne de texte
 class CharacterTile extends StatelessWidget {
   const CharacterTile(this.name);
 
@@ -80,9 +84,8 @@ class CharacterTile extends StatelessWidget {
 
 const apiLink = 'https://www.swapi.tech/api/';
 
+// logique de recuperation des donnees par l'api
 class BrainrotService {
-
-
   Future<List<String>> fetchBrainrot() async {
     await Future.delayed(
       Duration(seconds: 3),
@@ -121,6 +124,7 @@ class BrainrotService {
   // }
 }
 
+// modele de donnees pour un character
 class BasicCharacterData {
   final String id;
   final String name;
