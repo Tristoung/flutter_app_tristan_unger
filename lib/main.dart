@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Star Wars',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 205, 252, 255),
+          seedColor: const Color.fromARGB(255, 205, 245, 255),
           ),
       ),
       home: const Home(),
@@ -22,25 +22,35 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({
     super.key
   });
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final _names = [
+    'Vador',
+    'Luke',
+    'Palpatine',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text('Je suis ton père !'),
+        title: const Text('Star Wars'),
       ),
       body: ListView(
-        children: const [
-          CharacterTile('Luke'),
-          CharacterTile('Vador'),
-          CharacterTile('Palpatine'),
-          
-        ],
+        children: _names
+        .map(
+          (name) => CharacterTile(name),
+        )
+        .toList(),
       ),
     );
   }
