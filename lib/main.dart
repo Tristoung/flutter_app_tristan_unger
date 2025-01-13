@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Star Wars',
+      title: 'Brainrot List',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 205, 245, 255),
@@ -33,9 +33,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _names = [
-    'Vador',
-    'Luke',
-    'Palpatine',
+    'Property in Egypt',
+    'John Pork',
+    'Chopped Chin',
   ];
 
   @override
@@ -43,14 +43,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text('Star Wars'),
+        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        title: const Text('Brainrot List'),
       ),
-      body: ListView(
-        children: _names
-        .map(
-          (name) => CharacterTile(name),
-        )
-        .toList(),
+      body: ListView.builder(
+        itemCount: _names.length,
+        itemBuilder: (BuildContext context, int index) => CharacterTile(
+          _names[index],
+        ),
       ),
     );
   }
